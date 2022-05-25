@@ -7,7 +7,7 @@
 // })
 
 // db.posts.find({
-//     id: {$gt: 6}
+//     // id: {$gt: 6}
 // })
 
 // db.posts.updateOne({id: {$lt: 6}},{$set:{text:"updated test"}})
@@ -16,17 +16,20 @@
 // db.posts.deleteOne(
 //     {id: "6"})
 
-// const getPosts = (limit, skip, sortField, sortOrder, filterField, filterValue) => {
+const getPosts = (limit, skip, sortField, sortOrder, filterField, filterValue) => {
     
-//     const sortObj = {}
-//     sortObj[sortField] = sortOrder
+    const sortObj = {}
+    sortObj[sortField] = sortOrder
+    
+    const filterObj =  {}
+    filterObj[filterField] = filterValue
     
     
-//     console.log("sortObj", sortObj)
+    console.log("sortObj", sortObj)
    
-//     const dbResult = db.posts.find({}).sort(sortObj).limit(limit).skip(skip).toArray()
+    const dbResult = db.posts.find(filterObj).sort(sortObj).limit(limit).skip(skip).toArray()
     
-//     return dbResult
-// }
+    return dbResult
+}
 
-// console.log(getPosts(2, 2, "createdAt", 1, "author", "Julian Morales"))
+console.log(getPosts(2, 0, "createdAt", 1, "author", "Julian Morales"))
