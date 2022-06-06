@@ -35,55 +35,63 @@
 // console.log(getPosts(2, 0, "createdAt", 1, "author", "Julian Morales"))
 
 
-// const getSinglePost = (postId)=>{
-//     const result = db.posts.find({id:postId});
-//     return result
-// };
+const getSinglePost = (postId)=>{
+    const result = db.posts.find({id:postId}).toArray();
+    return result
+};
 
-const getPostsCollectionLength = ()=>{
-    const posts = db.posts.count()
-    let counter=0;
-    //console.log(posts)
-    return posts
-}
+console.log(getSinglePost(65))
 
-//getSinglePost('6')
-getPostsCollectionLength()
 
-//console.log(getSinglePost('6'));
 
-const blogId = getPostsCollectionLength()+1;
+// const getPostsCollectionLength = ()=>{
+//     const posts = db.posts.count()
+//     let counter = 0;
+    
+//     return posts
+// }
+// console.log(getPostsCollectionLength())
 
- const makePost=(blogId,title,text,author,category)=>{
-    const today = new Date();
-    db.posts.insert({
-        id:blogId,
-        title:title,
-        text:text,
-        author:author,
-        category:category,
-        createdAt:today.toISOString()
-    })
-}
 
- //makePost(blogId,'new post','this is new post by julian','julian','test')
+
+// const blogId = getPostsCollectionLength()+1;
+
+//  const makePost=(blogId,title,text,author,category)=>{
+//     const today = new Date();
+//     db.posts.insert({
+//         id:blogId,
+//         title:title,
+//         text:text,
+//         author:author,
+//         category:category,
+//         createdAt:today.toISOString()
+//     })
+// }
+
+//  makePost(blogId,'new post','this is new post by julian','julian','test')
  
- const updatePost =(blogId,title,text,author,category)=>{
-     db.post.update({id:blogId},{$set:{
-         title:title,
-         text:text,
-         author:author,
-         category:category
-     }})
- }
 
-//updatePost('5','new title','new test','new author','new category')
+ 
+//  const updatePost =(blogId,title,text,author,category)=>{
+//      db.posts.updateOne({id:blogId},{$set:{
+//          title:title,
+//          text:text,
+//          author:author,
+//          category:category
+//      }})
+//  }
 
+// updatePost(blogId,'new title','new test','new author','new category')
 
-const deletePosts=(blogIds)=>{
+//  console.log(getSinglePost(blogId))
+
+// const deletePosts=(blogIds)=>{
   
-    db.posts.deleteMany({id:{$in:blogIds}})
-}
+//     db.posts.deleteMany({id:{$in:blogIds}})
+// }
+// deletePosts([69])
+// console.log(getPostsCollectionLength())
+
 
 
 
